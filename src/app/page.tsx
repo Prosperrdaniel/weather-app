@@ -15,7 +15,7 @@ import { convertWindSpeed } from "@/utils/ConvertWindSpeed";
 import ForecastWeatherDetail from "@/components/forecastWeatherDetail";
 import { useAtom } from "jotai";
 import { loadingCityAtom, placeAtom } from "./atom";
-import { useEffect } from "react";
+import { Key, useEffect } from "react";
 import WeatherSkeleton from "./WeatherSkeleton";
 
 // https://api.openweathermap.org/data/2.5/forecast?q=pune&appid=0f5605ab0090c3de712745d0fbf88057&cnt=56
@@ -115,13 +115,13 @@ console.log('data', data  )
 const uniqueDates = [
   ...new Set(
     data?.list.map(
-      (entry) => new Date(entry.dt * 1000).toISOString().split("T")[0]
+      (entry: { dt: number; }) => new Date(entry.dt * 1000).toISOString().split("T")[0]
     )
   )
 ];
 
 const firstDataForEachDate = uniqueDates.map((date) => {
-  return data?.list.find((entry) => {
+  return data?.list.find((entry: { dt: number; }) => {
     const entryDate = new Date(entry.dt * 1000).toISOString().split("T") [0];
     const entryTime = new Date(entry.dt * 1000).getHours();
     return entryDate === date && entryTime >= 6;
@@ -167,7 +167,7 @@ const firstDataForEachDate = uniqueDates.map((date) => {
               </div>
               {/* time and weather icon */}
               <div className="flex gap-10 sm:gap-16 overflow-x-auto w-full justify-between pr-3">
-                {data?.list.map((d,i)=>
+                {data?.list.map((d: { dt_txt: string; weather: { icon: string; }[]; main: { temp: any; }; },i: Key | null | undefined)=>
                 <div key={i} className="flex flex-col justify-between gap-2 items-center txt-xs font-semibold">
                   <p className="whitespace-nowrap">
                     {format(parseISO(d.dt_txt), "h:mm a")}
