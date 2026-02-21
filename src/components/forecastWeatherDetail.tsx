@@ -38,10 +38,10 @@ export default function ForecastWeatherDetail(props: ForecastWeatherDetailProps)
 
         {/*  */}
         <div className="flex flex-col px-4">
-          <span className="text-5xl "> {convertKelvinToCelsius(temp ?? 0)}°</span>
+          <span className="text-5xl "> {convertKelvinToCelsius(Number(temp) ?? 0)}°</span>
           <p className="text-xs space-x-1 whitespace-nowrap">
             <span> Feels like</span>
-            <span>{convertKelvinToCelsius(feels_like ?? 0)}°</span>
+            <span>{convertKelvinToCelsius(Number(feels_like) ?? 0)}°</span>
           </p>
         </div>
       </section>
