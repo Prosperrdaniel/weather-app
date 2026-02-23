@@ -46,8 +46,10 @@ export default function ForecastWeatherDetail(props: ForecastWeatherDetailProps)
         </div>
       </section>
       {/* right */}
-      <section className="overflow-x-auto flex justify-between gap-4 px-4 w-full pr-10">
-        <WeatherDetails {...props} />
+      <section className="overflow-x-auto w-full px-4">
+        <div className="flex gap-4 min-w-[400px] justify-between">
+          <WeatherDetails {...props} />
+        </div>
       </section>
     </Container>
   )

@@ -193,15 +193,18 @@ const firstDataForEachDate = uniqueDates.map((date) => {
                       firstData?.dt_txt ?? ""
                     )} />
                 </Container>
-                <Container className="bg-yellow-300/80 px-6 gap-4 justify-between over-x-auto">
-                  <WeatherDetails
-                  visibility={metersToKilometers(firstData?.visibility ?? 1000)}
-                  humidity={`${firstData?.main.humidity}%`}
-                  windSpeed={convertWindSpeed(firstData?.wind.speed ?? 1.64)}
-                  airPressure={`${firstData?.main.pressure} hPa`}
-                  sunrise={format(fromUnixTime(data?.city.sunrise ?? 1771378263), "H:mm ")}
-                  sunset={format(fromUnixTime(data?.city.sunset ?? 1771419979), "H:mm ")} />
-                </Container>                  
+                <Container className="bg-yellow-300/80 px-4 gap-4 overflow-x-auto">
+                  <div className="flex gap-4 min-w-[400px] w-full justify-between">
+                    <WeatherDetails
+                      visibility={metersToKilometers(firstData?.visibility ?? 1000)}
+                      humidity={`${firstData?.main.humidity}%`}
+                      windSpeed={convertWindSpeed(firstData?.wind.speed ?? 1.64)}
+                      airPressure={`${firstData?.main.pressure} hPa`}
+                      sunrise={format(fromUnixTime(data?.city.sunrise ?? 1771378263), "H:mm ")}
+                      sunset={format(fromUnixTime(data?.city.sunset ?? 1771419979), "H:mm ")}
+                    />
+                  </div>
+                </Container>              
                 {/* right */}
           </div>
         </section>
