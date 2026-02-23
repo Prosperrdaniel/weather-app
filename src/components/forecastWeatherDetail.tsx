@@ -7,10 +7,10 @@ export interface ForecastWeatherDetailProps extends WeatherDetailProps {
   weatherIcon: string;
   date: string;
   day: string;
-  temp: string;
-  feels_like: string;
-  temp_min: string;
-  temp_max: string;
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
   description: string;
 }
 
@@ -19,10 +19,10 @@ export default function ForecastWeatherDetail(props: ForecastWeatherDetailProps)
   weatherIcon = "02d",
   date = "19.09",
   day = "Wednessday",
-  temp,
-  feels_like, 
-  temp_min,
-  temp_max,
+  temp = 0,
+  feels_like = 0, 
+  temp_min = 0,
+  temp_max = 0,
   description
   } = props;
 
